@@ -15,9 +15,8 @@ object Server {
   def stream[F[_]: ConcurrentEffect](implicit T: Timer[F], C: ContextShift[F]): Stream[F, ExitCode] =
     for {
       client <- BlazeClientBuilder[F](global).stream
-      helloWorldAlg = HelloWorldAlg.impl[F]
-      implicit0(h1) = helloWorldAlg
-      jokeAlg = JokeAlg.impl[F](client)
+      implicit0(helloWorldAlg) = HelloWorldAlg.impl[F]
+      implicit0(jokeAlg) <- Stream.pure(JokeAlg.impl[F](client)).covary[F]
 
       // Combine Service Routes into an HttpApp
       // Can also be done via a Router if you
