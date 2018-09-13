@@ -11,7 +11,7 @@ lazy val root = (project in file("."))
     name := "quickstart",
     version := "0.0.1-SNAPSHOT",
     scalaVersion := "2.12.6",
-    addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.0-M1"),
+    addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.0-M2"),
     libraryDependencies ++= Seq(
       "org.http4s"      %% "http4s-blaze-server" % Http4sVersion,
       "org.http4s"      %% "http4s-blaze-client" % Http4sVersion,
